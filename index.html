@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redes Sociais do CSSJD - Abril 2026 - TEXTE BD</title>
+    <meta name="description" content="Indicador Estratégico - Teste de Banco de Dados" />
+    <meta property="og:title" content="Redes Sociais do CSSJD - Abril 2026 - TEXTE BD" />
+    <meta property="og:description" content="Indicador Estratégico - Teste de Banco de Dados" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                500: '#0ea5e9',
+                600: '#0284c7',
+                700: '#0369a1',
+                800: '#075985',
+                900: '#0c4a6e',
+              },
+              neon: {
+                bg: '#020617',
+                card: '#0f172a',
+                blue: '#00f2ff', 
+                glowBlue: '#22d3ee',
+                purple: '#bc13fe',
+                green: '#00ff41',
+                pink: '#ff0055',
+              },
+              cyber: {
+                bg: '#00050a',
+                card: 'rgba(2, 12, 27, 0.8)',
+                border: '#00f2ff',
+                accent: '#ff00ea',
+                grid: 'rgba(0, 242, 255, 0.05)'
+              },
+              infinity: {
+                bg: '#010409',
+                glass: 'rgba(15, 23, 42, 0.5)',
+                border: 'rgba(139, 92, 246, 0.3)',
+                accent: '#8b5cf6',
+                glow: '#a855f7'
+              }
+            },
+            boxShadow: {
+              'neon-blue': '0 0 10px rgba(0, 242, 255, 0.5), 0 0 20px rgba(0, 242, 255, 0.2)',
+              'neon-purple': '0 0 10px rgba(188, 19, 254, 0.5), 0 0 20px rgba(188, 19, 254, 0.2)',
+              'neon-green': '0 0 10px rgba(0, 255, 65, 0.5), 0 0 20px rgba(0, 255, 65, 0.2)',
+              'cyber-glow': '0 0 15px rgba(0, 242, 255, 0.3), inset 0 0 10px rgba(0, 242, 255, 0.1)',
+              'infinity-3d': '0 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.05)',
+            },
+            animation: {
+              'pulse-neon': 'pulse-neon 3s ease-in-out infinite',
+              'scanline': 'scanline 8s linear infinite',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              'pulse-neon': {
+                '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                '50%': { opacity: '0.8', transform: 'scale(0.99)' },
+              },
+              'scanline': {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(100%)' }
+              },
+              'float': {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #f8fafc;
+        font-family: 'Inter', sans-serif;
+        transition: background-color 0.5s ease;
+      }
+      
+      .cyber-mode {
+        background-color: #00050a !important;
+        background-image: 
+          linear-gradient(to right, rgba(0, 242, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .cyber-mode::after {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 2px;
+        background: rgba(0, 242, 255, 0.1);
+        z-index: 100;
+        pointer-events: none;
+        animation: scanline 4s linear infinite;
+      }
+
+      .infinity-mode {
+        background: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #010409 70%, #000 100%) !important;
+      }
+
+      .neon-text-blue { text-shadow: 0 0 5px #00f2ff, 0 0 10px rgba(0, 242, 255, 0.5); }
+      .neon-text-purple { text-shadow: 0 0 5px #bc13fe, 0 0 10px rgba(188, 19, 254, 0.5); }
+      .neon-text-green { text-shadow: 0 0 5px #00ff41, 0 0 10px rgba(0, 255, 65, 0.5); }
+
+      .glass-card {
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+
+      /* Hover animations for charts */
+      .recharts-bar-rectangle:hover {
+        filter: brightness(1.2);
+        transition: all 0.3s ease-out;
+        cursor: pointer;
+      }
+      .recharts-area-path:hover {
+        filter: brightness(1.1);
+        transition: all 0.3s ease-out;
+        cursor: pointer;
+      }
+      .recharts-pie-sector:hover {
+        filter: brightness(1.15) saturate(1.1);
+        transition: all 0.3s ease-out;
+        cursor: pointer;
+      }
+      .recharts-line-dots circle:hover {
+        r: 10 !important;
+        transition: r 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+      }
+
+      @media print {
+        .cyber-mode::after { display: none !important; }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.475.0",
+    "recharts": "https://esm.sh/recharts@^2.12.0",
+    "react-dom": "https://esm.sh/react-dom@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "xlsx": "https://esm.sh/xlsx@0.18.5"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

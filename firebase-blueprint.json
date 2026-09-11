@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "UserProfile": {
+      "description": "Perfis de usuários e colaboradores com permissão de acesso no painel",
+      "fields": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "description": "Email address" },
+        "displayName": { "type": "string", "description": "Full name" },
+        "photoURL": { "type": "string", "description": "Avatar URL" },
+        "role": { "type": "string", "description": "Role: admin, editor, or viewer" },
+        "createdAt": { "type": "string", "description": "ISO timestamp" },
+        "lastLoginAt": { "type": "string", "description": "ISO timestamp" }
+      }
+    },
+    "MonthlyMetric": {
+      "description": "Métricas mensais de redes sociais (Instagram, Facebook, LinkedIn) do CSSJD",
+      "fields": {
+        "id": { "type": "string", "description": "YYYY-MM identifier, eg 2026-04" },
+        "year": { "type": "number", "description": "Year of the metric" },
+        "month": { "type": "string", "description": "Two-digit month code eg 04" },
+        "monthName": { "type": "string", "description": "Month name in Portuguese eg Abril" },
+        "instagram": { "type": "object", "description": "Instagram metrics" },
+        "facebook": { "type": "object", "description": "Facebook metrics" },
+        "linkedin": { "type": "object", "description": "LinkedIn metrics" },
+        "total": { "type": "object", "description": "Consolidated metrics" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }
+      }
+    },
+    "SocialPost": {
+      "description": "Publicação individual no ranking com métricas e engajamento",
+      "fields": {
+        "id": { "type": "string", "description": "Unique post identifier" },
+        "title": { "type": "string", "description": "Title or headline of the post" },
+        "month": { "type": "string", "description": "Month reference eg abril/2026" },
+        "type": { "type": "string", "description": "Media type eg Reels, Podcast, Vagas" },
+        "reach": { "type": "number", "description": "Reach number" },
+        "interactions": { "type": "number", "description": "Interactions count" },
+        "engagement": { "type": "number", "description": "Engagement rate percentage" },
+        "link": { "type": "string", "description": "URL to post" },
+        "createdAt": { "type": "string", "description": "ISO timestamp of creation" }
+      }
+    },
+    "DashboardComment": {
+      "description": "Anotações e comentários de análise nos relatórios e gráficos",
+      "fields": {
+        "sectionId": { "type": "string", "description": "Section identifier" },
+        "comment": { "type": "string", "description": "Text annotation" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp" }
+      }
+    },
+    "ReportEdit": {
+      "description": "Textos e pareceres editados no relatório gerencial",
+      "fields": {
+        "reportKey": { "type": "string", "description": "Key of report section" },
+        "content": { "type": "string", "description": "Customized text" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp" }
+      }
+    }
+  }
+}
